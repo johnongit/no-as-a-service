@@ -17,7 +17,7 @@ Resources:
         HttpReason:
           Type: HttpApi        # HTTP API v2
           Properties:
-            Path: /no
+            Path: /non
             Method: GET
 
   CloudFrontDistribution:
@@ -50,7 +50,7 @@ Resources:
 Outputs:
   ApiUrl:
     Description: "API Gateway endpoint URL"
-    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/no"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/non"
   
   CloudFrontUrl:
     Description: "CloudFront distribution domain"
@@ -58,4 +58,4 @@ Outputs:
     
   CustomDomainUrl:
     Description: "Custom domain URL"
-    Value: "https://no.inosta.cc/no"
+    Value: "https://no.inosta.cc/non"

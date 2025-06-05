@@ -12,11 +12,11 @@ This is an adaptation of the excellent [hotheadhacker/no-as-a-service](https://g
 
 The service is currently deployed and available at:
 
-**https://no.inosta.cc/no**
+**https://no.inosta.cc/non**
 
 Try it out:
 ```bash
-curl https://no.inosta.cc/no
+curl https://no.inosta.cc/non
 ```
 
 ## 📋 Features
@@ -88,7 +88,7 @@ curl https://no.inosta.cc/no
 
 ### Custom Domain Setup (Optional)
 
-To set up a custom domain like `your-domain.com/no`:
+To set up a custom domain like `your-domain.com/non`:
 
 1. **Create SSL Certificate** (must be in `us-east-1` for CloudFront):
    ```bash
@@ -148,7 +148,7 @@ Update `samconfig.toml` with environment-specific configurations.
 sam local start-api
 
 # Test the endpoint
-curl http://localhost:3000/no
+curl http://localhost:3000/non
 ```
 
 ### Test Function Directly
