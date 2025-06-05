@@ -6,6 +6,8 @@ A serverless adaptation of the original [No as a Service](https://github.com/hot
 
 This is an adaptation of the excellent [hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service) project, redesigned for serverless deployment on AWS with French sarcastic responses tailored for the dev/ops/cybersec community.
 
+**Credits**: Original concept and implementation by [hotheadhacker](https://github.com/hotheadhacker). This serverless version maintains the spirit while adapting for cloud-native deployment.
+
 ## 🚀 Live Service
 
 The service is currently deployed and available at:
@@ -62,7 +64,7 @@ curl https://no.inosta.cc/no
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/johnongit/no-as-a-service.git
    cd no-as-a-service
    ```
 
@@ -198,6 +200,16 @@ Edit `reasons.json` to add new sarcastic "no" responses. Categories include:
 - Operations/DevOps pain points  
 - Cybersecurity concerns
 - General tech industry humor
+
+## 🔗 Related Projects
+
+- **[Original No-as-a-Service](https://github.com/hotheadhacker/no-as-a-service)** - The original Express.js implementation
+- **[no-as-a-service-rust](https://github.com/ZAZPRO/no-as-a-service-rust)** - Rust implementation
+
+## 👤 Authors
+
+- **Original**: [hotheadhacker](https://github.com/hotheadhacker) - Created the original concept and implementation
+- **Serverless Adaptation**: [johnongit](https://github.com/johnongit) - AWS Lambda/SAM adaptation with French responses
 
 ## 📝 License
 

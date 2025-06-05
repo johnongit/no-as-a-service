@@ -1,6 +1,8 @@
 {
-    "name": "no-as-a-service",
-    "version": "1.0.0",
-    "type": "module"
-  }
-  
+  "name": "no-as-a-service-serverless",
+  "version": "2.0.0",
+  "description": "Serverless adaptation of hotheadhacker's no-as-a-service using AWS Lambda",
+  "type": "module",
+  "author": "Serverless adaptation by johnongit, original by hotheadhacker",
+  "license": "MIT"
+}
