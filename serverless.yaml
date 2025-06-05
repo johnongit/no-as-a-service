@@ -1,0 +1,21 @@
+service: no-as-a-service
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  architecture: arm64
+  region: eu-west-3
+  stage: prod
+  memorySize: 128
+  timeout: 3
+  httpApi:         # HTTP API v2
+    payload: '2.0'
+
+functions:
+  reason:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /reason
+          method: GET

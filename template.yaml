@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: no-as-a-service – API humour refus
+
+Resources:
+  NoApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs20.x      # GA, maintenue jusqu’en 2026
+      Architectures: [arm64]   # Graviton2 = -20 % coût
+      MemorySize: 128
+      Timeout: 3
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        HttpReason:
+          Type: HttpApi        # HTTP API v2
+          Properties:
+            Path: /no
+            Method: GET
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - no.inosta.cc
+        Origins:
+          - Id: ApiGatewayOrigin
+            DomainName: !Sub "${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+            CustomOriginConfig:
+              HTTPPort: 443
+              OriginProtocolPolicy: https-only
+        DefaultCacheBehavior:
+          TargetOriginId: ApiGatewayOrigin
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: [GET, HEAD]
+          CachedMethods: [GET, HEAD]
+          Compress: true
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  # CachingOptimized
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:911066400676:certificate/fb66b7fb-c9e2-4597-bad5-aa814bd6b14c
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
+        Enabled: true
+        Comment: "No as a Service CloudFront Distribution"
+        PriceClass: PriceClass_100
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/no"
+  
+  CloudFrontUrl:
+    Description: "CloudFront distribution domain"
+    Value: !GetAtt CloudFrontDistribution.DomainName
+    
+  CustomDomainUrl:
+    Description: "Custom domain URL"
+    Value: "https://no.inosta.cc/no"
